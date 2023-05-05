@@ -7,6 +7,7 @@ import { LocalStorageService } from 'angular-web-storage';
   styleUrls: ['./app.component.scss'],
 
 })
+
 export class AppComponent {
   title = 'project-front-viajes';
   constructor(private localStorage: LocalStorageService) { };
@@ -26,9 +27,6 @@ export class AppComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         const inputValue = result.value;
-        // haz algo con el valor del input, por ejemplo:
-        console.log(`El usuario ingresó el filtro "${inputValue}"`);
-
         this.agregar_opcion(inputValue);
       }
     });
@@ -55,6 +53,7 @@ export class AppComponent {
     { nombre_usuario: 'Ezequiel Salatino', queja: 'Necesito ayuda', satisfaccion: '80%', prioridad: 'Medium' , estados: 'Open'},
     { nombre_usuario: 'Emiliano Consenzo', queja: 'No puedo ingresar a mi cuenta', satisfaccion: '100%', prioridad: 'Low' , estados: 'Pending'},
   ];
+
 }
 
 
