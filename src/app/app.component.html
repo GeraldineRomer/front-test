@@ -5,24 +5,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travels</title>
+
 </head>
 <body>
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <div class="dropdown-container">
+        <!-- establecer dropdown de los estados -->
+        <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Todos los estados
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul class="dropdown-menu" style="">
+            <li><a class="dropdown-item" *ngFor="let opcion of get_opciones_dropdown()">{{ opcion }}</a></li>
           </ul>
         </div>
       </div>
+      <!-- establecer botón de añadir filtro -->
         <div class="col-md-3">
-          <button type="button" class="btn btn-outline-success">
+          <button type="button" class="btn btn-outline-success" (click)="ingreso_nombre_filtro()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill">
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
             </svg>
@@ -30,34 +31,26 @@
           </button>
         </div>
     </div>
-    <p class="fs-3">254 request</p>
-    <table class="table table-hover">
+    <!-- elementos de la tabla -->
+    <p class="fs-3">{{ items_tabla.length }} request</p>
+    <!-- tabla -->
+    <table class="table table-hover" id="tabla">
       <thead>
         <tr>
           <th scope="col">Nombre usuario</th>
-          <th scope="col">Viaje</th>
-          <th scope="col">Cliente satisfecho</th>
+          <th scope="col">Queja</th>
+          <th scope="col">Satisfacción del cliente</th>
           <th scope="col">Prioridad</th>
           <th scope="col">Estados</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
+        <tr *ngFor="let item of items_tabla">
+          <td ><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> {{ item.nombre_usuario }}</td>
+          <td>{{ item.queja }}</td>
+          <td>{{ item.satisfaccion }}</td>
+          <td>{{ item.prioridad }}</td>
+          <td>{{ item.estados }}</td>
         </tr>
       </tbody>
     </table>
